@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Career-IQ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>Career-IQ</h1>
+                <span class="tagline">AI-Powered Career Intelligence</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="dashboard.html" class="active">Dashboard</a>
+                <div class="user-info" id="userInfo" style="display: none;">
+                    <span class="user-name" id="userName">Welcome, User</span>
+                </div>
+                <a href="#" id="logoutBtn">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="dashboard-section">
+        <div class="container">
+            <h2 class="dashboard-title">Resume & Job Matcher</h2>
+            <p class="dashboard-subtitle">Upload your resume and paste the job description to get instant analysis</p>
+            
+            <div class="dashboard-content">
+                <div class="upload-section">
+                    <form id="analysisForm" class="analysis-form">
+                        <div class="form-group">
+                            <label for="resumeFile">Upload Resume</label>
+                            <div class="file-upload-wrapper">
+                                <input 
+                                    type="file" 
+                                    id="resumeFile" 
+                                    name="resume" 
+                                    accept=".pdf,.docx,.doc"
+                                    required
+                                >
+                                <label for="resumeFile" class="file-upload-label">
+                                    <span class="file-upload-icon">📄</span>
+                                    <span class="file-upload-text">Choose PDF or DOCX file</span>
+                                </label>
+                                <span id="fileName" class="file-name"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="jobDescription">Job Description</label>
+                            <textarea 
+                                id="jobDescription" 
+                                name="jobDescription" 
+                                rows="8"
+                                placeholder="Paste the job description here..."
+                                required
+                            ></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block" id="analyzeBtn">
+                            <span class="btn-text">Analyze Match</span>
+                            <span class="btn-loader" style="display: none;">Analyzing...</span>
+                        </button>
+                    </form>
+                </div>
+                
+                <div id="resultsSection" class="results-section" style="display: none;">
+                    <div class="results-header">
+                        <h3>Analysis Results</h3>
+                    </div>
+                    
+                    <!-- Resume Data Section -->
+                    <div id="resumeDataSection" class="resume-data-section"></div>
+                    
+                    <div class="match-score-card">
+                        <div class="score-circle">
+                            <div class="score-value" id="matchScore">0%</div>
+                            <div class="score-label">Match Score</div>
+                        </div>
+                    </div>
+                    
+                    <div class="results-grid">
+                        <div class="result-card success-card">
+                            <h4>✅ Matched Skills</h4>
+                            <div id="matchedSkills" class="skills-list"></div>
+                            <div class="skill-count">
+                                <span id="matchedCount">0</span> skills matched
+                            </div>
+                        </div>
+                        
+                        <div class="result-card warning-card">
+                            <h4>❌ Missing Skills</h4>
+                            <div id="missingSkills" class="skills-list"></div>
+                            <div class="skill-count">
+                                <span id="missingCount">0</span> skills to develop
+                            </div>
+                        </div>
+                        
+                        <div class="result-card info-card">
+                            <h4>➕ Additional Skills</h4>
+                            <div id="extraSkills" class="skills-list"></div>
+                            <div class="skill-count">
+                                <span id="extraCount">0</span> extra skills
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Advanced Analysis Section (NEW) -->
+                    <div id="advancedAnalysisSection" class="advanced-analysis-section" style="display: none;"></div>
+                    
+                    <!-- Smart Suggestions Section (NEW) -->
+                    <div id="smartSuggestionsSection" class="smart-suggestions-section" style="display: none;"></div>
+                    
+                    <!-- Skill Recommendations -->
+                    <div id="skillRecommendationsSection" class="skill-recommendations-section" style="display: none;"></div>
+                    
+                    <!-- AI Analysis Section -->
+                    <div id="aiAnalysisSection" class="ai-analysis-section" style="display: none;"></div>
+                    
+                    <!-- Role Analysis Section -->
+                    <div id="roleAnalysisSection" class="role-analysis-section" style="display: none;"></div>
+                    
+                    <!-- Learning Roadmap Section -->
+                    <div id="learningRoadmapSection" class="learning-roadmap-section" style="display: none;"></div>
+                    
+                    <!-- Resume Improvement Section -->
+                    <div id="resumeImprovementSection" class="resume-improvement-section" style="display: none;"></div>
+                    
+                    <!-- Role-Based Skill Advisor Section -->
+                    <div id="roleAdvisorSection" class="role-advisor-section" style="display: none;">
+                        <div class="role-advisor-header">
+                            <h3>🎯 Role-Based Skill Advisor</h3>
+                            <p id="detectedRole" class="detected-role"></p>
+                        </div>
+                        
+                        <div class="role-skills-grid">
+                            <div class="role-card">
+                                <h4>✅ Skills You Have</h4>
+                                <div id="skillsYouHave" class="skills-list"></div>
+                            </div>
+                            
+                            <div class="role-card">
+                                <h4>📈 Skills to Improve</h4>
+                                <div id="skillsToImprove" class="skills-list"></div>
+                            </div>
+                            
+                            <div class="role-card">
+                                <h4>📚 Skills to Learn</h4>
+                                <div id="skillsToLearn" class="skills-list"></div>
+                            </div>
+                        </div>
+                        
+                        <div id="roadmapSection" class="roadmap-section">
+                            <h4>🗺️ Personalized Learning Roadmap</h4>
+                            <div id="roadmapContent"></div>
+                        </div>
+                        
+                        <div id="finalAdviceSection" class="final-advice-section">
+                            <h4>💬 Final AI Advice</h4>
+                            <p id="finalAdvice"></p>
+                        </div>
+                    </div>
+                    
+                    <div class="recommendations-card">
+                        <h4>💡 Detailed Recommendations</h4>
+                        <ul id="recommendationsList" class="recommendations-list"></ul>
+                    </div>
+                    
+                    <button class="btn btn-secondary btn-block" onclick="resetAnalysis()">Analyze Another Resume</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Career-IQ. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+

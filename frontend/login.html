@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Career-IQ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>Career-IQ</h1>
+                <span class="tagline">AI-Powered Career Intelligence</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#about">About</a>
+                <a href="login.html" class="active">Login</a>
+                <a href="signup.html">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="auth-section">
+        <div class="container">
+            <!-- IMPORTANT: Make sure the backend server is running before logging in!
+                 To start the backend:
+                 1. Open terminal/command prompt
+                 2. Navigate to the backend folder: cd backend
+                 3. Run: python main.py
+                 4. Wait for "Application startup complete" message
+                 5. The server should be running on http://localhost:8000
+            -->
+            <div class="auth-card">
+                <h2>Welcome Back</h2>
+                <p class="auth-subtitle">Login to your Career-IQ account</p>
+                
+                <!-- Backend Status Notice -->
+                <div id="backendNotice" style="background: #fef3c7; border: 1px solid #f59e0b; border-radius: 8px; padding: 12px; margin-bottom: 20px; display: none;">
+                    <strong>⚠️ Backend Server Not Running</strong>
+                    <p style="margin: 8px 0 0 0; font-size: 14px;">
+                        Please start the backend server first:<br>
+                        <strong style="display: block; margin-top: 8px;">Easy way (Windows):</strong>
+                        <code style="background: #fff; padding: 4px 8px; border-radius: 4px; display: inline-block; margin-top: 4px;">
+                            Double-click: start_backend.bat
+                        </code><br>
+                        <strong style="display: block; margin-top: 8px;">Or manually:</strong>
+                        <code style="background: #fff; padding: 4px 8px; border-radius: 4px; display: inline-block; margin-top: 4px;">
+                            cd backend && python main.py
+                        </code>
+                    </p>
+                </div>
+                
+                <form id="loginForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            placeholder="your.email@example.com"
+                            required
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            placeholder="Enter your password"
+                            required
+                        >
+                    </div>
+                    
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="remember">
+                            <span>Remember me</span>
+                        </label>
+                        <a href="#" class="forgot-link">Forgot password?</a>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                </form>
+                
+                <div class="auth-footer">
+                    <p>Don't have an account? <a href="signup.html">Sign up here</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Career-IQ. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
