@@ -18,3 +18,4 @@ if (window.location.hostname === 'localhost' || window.location.hostname === '12
 
 console.log('Career-IQ API URL:', window.API_BASE_URL);
 
+

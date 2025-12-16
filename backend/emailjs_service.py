@@ -67,3 +67,4 @@ class EmailJSService:
             print(f"✗ EmailJS exception: {str(e)}")
             return False
 
+
